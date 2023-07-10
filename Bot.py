@@ -90,12 +90,12 @@ async def help(event):
     )
 
 
-@client.on(events.NewMessage(pattern="^/mentionall ?(.*)"))
+@client.on(events.NewMessage(pattern="^@all ?(.*)"))
 async def mentionall(event):
     chat_id = event.chat_id
     if event.is_private:
         return await event.respond(
-            "ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ʙᴇ ᴜsᴇ ɪɴ ɢʀᴏᴜᴘs ᴀɴᴅ ᴄʜᴀɴɴᴇʟs"
+            "Lu Bukan Admin Lu tuh Cuman Ampas Ga Usah Nyuruh Gua Tag All Bodoh"
         )
 
     is_admin = False
@@ -109,7 +109,7 @@ async def mentionall(event):
         ):
             is_admin = True
     if not is_admin:
-        return await event.respond("ᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴍᴇɴᴛɪᴏɴ ᴀʟʟ")
+        return await event.respond("Lu Bukan Admin Lu tuh Cuman Ampas Ga Usah Nyuruh Gua Tag All Bodoh")
 
     if event.pattern_match.group(1) and event.is_reply:
         return await event.respond("ɢɪᴠᴇ ᴍᴇ ᴏɴᴇ ᴀʀɢᴜᴍᴇɴᴛ")
@@ -125,7 +125,7 @@ async def mentionall(event):
             )
     else:
         return await event.respond(
-            "ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴏʀ ɢɪᴠᴇ ᴍᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴍᴇɴᴛɪᴏɴ ᴏᴛʜᴇʀs"
+            "Kasih Text Atau Reply, Yang Jelas Lah Blog"
         )
 
     spam_chats.append(chat_id)
@@ -135,7 +135,7 @@ async def mentionall(event):
         if not chat_id in spam_chats:
             break
         usrnum += 1
-        usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
+        usrtxt += f"🦠[{usr.first_name}](tg://user?id={usr.id})\n"
         if usrnum == 5:
             if mode == "text_on_cmd":
                 txt = f"{usrtxt}\n\n{msg}"
@@ -155,7 +155,7 @@ async def mentionall(event):
 async def _(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("sᴏʀʀʏ ʏᴏᴜ ᴄᴀɴ ᴍᴇɴᴛɪᴏɴ ᴀᴅᴍɪɴ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘ")
+        return await event.respond("Lu Bukan Admin Lu tuh Cuman Ampas Ga Usah Nyuruh Gua Tag All Bodoh")
 
     is_admin = False
     try:
@@ -168,10 +168,10 @@ async def _(event):
         ):
             is_admin = True
     if not is_admin:
-        return await event.respond("ᴏɴʟʏ ᴀᴅᴍɪɴ ᴄᴀɴ ᴍᴇɴᴛɪᴏɴ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs")
+        return await event.respond("Lu Bukan Admin Lu tuh Cuman Ampas Ga Usah Nyuruh Gua Tag All Bodoh")
 
     if event.pattern_match.group(1) and event.is_reply:
-        return await event.respond("ɢɪᴠᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴍᴇɴᴛɪᴏɴ")
+        return await event.respond("Kasih Gua Pesan Buat Mention")
     elif event.pattern_match.group(1):
         mode = "text_on_cmd"
         msg = event.pattern_match.group(1)
@@ -184,7 +184,7 @@ async def _(event):
             )
     else:
         return await event.respond(
-            "ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴏʀ ɢɪᴠᴇ ᴍᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴍᴇɴᴛɪᴏɴ ᴏᴛʜᴇʀs!"
+            "Kasih Text Atau Reply, Yang Jelas Lah Blog!"
         )
 
     spam_chats.append(chat_id)
@@ -214,13 +214,13 @@ async def _(event):
 @client.on(events.NewMessage(pattern="^/cancel$"))
 async def cancel_spam(event):
     if not event.chat_id in spam_chats:
-        return await event.respond("ᴛʜᴇʀᴇ ɪs ɴᴏ ᴘʀᴏᴄᴄᴇss ᴏɴ ɢᴏɪɴɢ...")
+        return await event.respond("Ga Ada Tag All Yang Berjalan Meki...")
     else:
         try:
             spam_chats.remove(event.chat_id)
         except:
             pass
-        return await event.respond("sᴛᴏᴘᴘᴇᴅ.")
+        return await event.respond("Tag Allnya Udah Mati.")
 
 
 print(">> ARAB MENTION WORKING <<")
