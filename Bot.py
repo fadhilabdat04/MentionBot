@@ -195,7 +195,7 @@ async def _(event):
         if not chat_id in spam_chats:
             break
         usrnum += 1
-        usrtxt += f❌" \n [{x.first_name}](tg://user?id={x.id})"
+        usrtxt += f" \n [{x.first_name}](tg://user?id={x.id})"
         if usrnum == 5:
             if mode == "text_on_cmd":
                 txt = f"{usrtxt}\n\n{msg}"
